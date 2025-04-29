@@ -14,7 +14,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/login", loginData);
+      const res = await axios.post(process.env.REACT_APP_BACKEND_URL+'/login', loginData);
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("firstName", res.data.firstname);
       localStorage.setItem("lastName", res.data.lastname);

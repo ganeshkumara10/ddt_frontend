@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 .envgit branch -M main
+.env
 
 # testing
 /coverage

@@ -6,7 +6,6 @@ import "../components/styles/homepage.css";
 import axios from "axios";
 
 
-
 function Homepage() {
   const [data, setData] = useState({ usercount: 0 });
   const [loading, setLoading] = useState(true);
@@ -18,7 +17,7 @@ function Homepage() {
 
       const fetchData = async () => {
         try {
-          const res = await axios.get("http://localhost:3000/usercount");
+          const res = await axios.get(process.env.REACT_APP_BACKEND_URL+'/usercount');
           setData(res.data);
           setLoading(false);
         } catch (err) {

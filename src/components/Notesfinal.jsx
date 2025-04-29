@@ -68,7 +68,7 @@ function Notesfinal() {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/tasks", {
+      const res = await axios.get(process.env.REACT_APP_BACKEND_URL+'/tasks', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setData(res.data);
@@ -79,7 +79,7 @@ function Notesfinal() {
 
   const fetchUndoData = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/taskschange", {
+      const res = await axios.get(process.env.REACT_APP_BACKEND_URL+'/taskschange', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCompletedData(res.data);
@@ -134,7 +134,7 @@ function Notesfinal() {
     };
 
     try {
-      await axios.post("http://localhost:3000/tasks", newNote, {
+      await axios.post(process.env.REACT_APP_BACKEND_URL+'/tasks', newNote, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -154,7 +154,7 @@ function Notesfinal() {
   const handleCurrentStatus = async (id) => {
     try {
       await axios.patch(
-        `http://localhost:3000/dtasks/${id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/dtasks/${id}`,
         { completestatus: true, currentstatus: true },
         {
           headers: {
@@ -191,7 +191,7 @@ function Notesfinal() {
     };
 
     try {
-      await axios.put(`http://localhost:3000/tasks/${id}`, updatedNote, {
+      await axios.put(`${process.env.REACT_APP_BACKEND_URL}/tasks/${id}`, updatedNote, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -209,7 +209,7 @@ function Notesfinal() {
   const handleStatus = async (id) => {
     try {
       await axios.patch(
-        `http://localhost:3000/tasks/${id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/dtasks/${id}`,
         { completestatus: true, currentstatus: false },
         {
           headers: {
@@ -230,7 +230,7 @@ function Notesfinal() {
   const handleChangeStatus = async (id) => {
     try {
       await axios.patch(
-        `http://localhost:3000/taskschange/${id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/taskschange/${id}`,
         { completestatus: false, currentstatus: false },
         {
           headers: {

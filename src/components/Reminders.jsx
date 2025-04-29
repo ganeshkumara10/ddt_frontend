@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Paper from '@mui/material/Paper';
-import {Chart, PieSeries, Title} from '@devexpress/dx-react-chart-material-ui';
 import { PieChart } from '@mui/x-charts/PieChart';
 import { Typography } from "@mui/material";
 
@@ -30,7 +28,7 @@ function Reminders() {
 
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/reminders", {
+        const res = await axios.get(process.env.REACT_APP_BACKEND_URL+'/reminders', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setData(res.data);
@@ -42,7 +40,7 @@ function Reminders() {
 
     const pieFetchData = async () => {
       try {
-        const res = await axios.get('http://localhost:3000/reminderspie', {
+        const res = await axios.get(process.env.REACT_APP_BACKEND_URL+'/reminderspie', {
           headers: { Authorization: `Bearer ${token}` },
         });
     

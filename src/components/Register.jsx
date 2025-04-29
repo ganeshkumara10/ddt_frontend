@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import {TextField,Button,Container,Typography,Box,Snackbar,Alert} from "@mui/material";
 
+
 //step 1: set usestate to take inputs and update Regestration data
 //step 2:On form submit run the function to POST data and show the status
 //Step 3: To show the status using snackbar to display success or alert text
@@ -16,7 +17,7 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3000/register", registerData);
+      await axios.post(process.env.REACT_APP_BACKEND_URL+'/register', registerData);
       setSuccess("Registration successful! Please log in.");
       setOpenSnackbar(true);
       setTimeout(() => navigate("/login"), 2000);
